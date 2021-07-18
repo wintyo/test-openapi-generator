@@ -1,0 +1,13 @@
+version: "3.0"
+
+services:
+  openapi-generator-client:
+    image: openapitools/openapi-generator-cli:v5.2.0
+    volumes:
+      - ./:/local
+    command: generate -g typescript-axios -i local/sample-swagger.yml -o local/client
+  openapi-generator-server:
+    image: openapitools/openapi-generator-cli:v5.2.0
+    volumes:
+      - ./:/local
+    command: generate -g python-flask -i local/sample-swagger.yml -o local/server-python
